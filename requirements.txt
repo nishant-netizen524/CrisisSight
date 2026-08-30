@@ -1,17 +1,27 @@
+# Core ML (The Golden Trio)
 tensorflow==2.15.0
+keras==2.15.0
+numpy==1.26.4
+
+# Data Processing
 pandas==2.1.4
-numpy==1.26.2
 Pillow==10.1.0
+
+# NLP 
+sentence-transformers==2.2.2
 transformers==4.36.2
-tensorflow-hub==0.15.0
+
+# Backend & Frontend
 fastapi==0.109.0
 uvicorn==0.27.0
 python-multipart==0.0.6
 streamlit==1.30.0
 folium==0.15.1
 streamlit-folium==0.18.0
+
+# Utilities & LLM
 requests==2.31.0
 python-dotenv==1.0.0
 tqdm==4.66.1
-groq==0.9.0
+groq
 kagglehub
