@@ -15,6 +15,8 @@ __pycache__/
 venv/
 env/
 ENV/
+.venv/
+
 
 # Jupyter
 .ipynb_checkpoints/
@@ -25,6 +27,7 @@ ENV/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
@@ -43,3 +46,7 @@ logs/
 
 # W&B
 wandb/
+
+# Demo videos (too large for GitHub)
+docs/*.mp4
+docs/*.mov
