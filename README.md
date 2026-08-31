@@ -5,6 +5,16 @@
 CrisisSight is a production-ready multimodal AI system that combines satellite imagery,
 text reports, and LLM agents to assess disaster severity and generate actionable response plans.
 
+## 🏗️ System Architecture
+
+![Architecture Diagram](docs/architecture_diagram.png)
+
+The system follows a decoupled microservices architecture:
+1. **Frontend**: Streamlit chatbot handles user interaction and image uploads.
+2. **Backend**: FastAPI serves as the orchestration layer, handling preprocessing and routing.
+3. **AI Core**: Frozen ResNet50 and MiniLM encoders extract 256-dim features, fused via dense layers for severity classification.
+4. **LLM Agent**: Groq API (Llama-3) receives the severity context and generates a structured JSON action plan.
+
 ## 🎥 Demo Video
 
 [Watch the demo](docs/demo_video.mp4)
