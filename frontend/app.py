@@ -2,8 +2,7 @@ import streamlit as st
 import requests
 import json
 from pathlib import Path
-import folium
-from streamlit_folium import st_folium
+
 from datetime import datetime
 
 # ==========================================
@@ -61,7 +60,7 @@ with st.sidebar:
             st.success("✅ API Connected")
         else:
             st.error("❌ API Error")
-    except:
+    except requests.RequestException:
         st.error("❌ API Offline")
         st.stop()
     
@@ -106,7 +105,7 @@ if uploaded_file:
     st.session_state.uploaded_image = uploaded_file
     col1, col2 = st.columns([1, 3])
     with col1:
-        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)  #type: ignore
     with col2:
         st.success("✅ Image uploaded! Now describe the situation in the chat below.")
 
