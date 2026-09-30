@@ -12,7 +12,7 @@ DATA = Path("data")
 def download_tweets():
     try:
         try:
-            import kagglehub
+            import kagglehub    #type: ignore
         except ImportError as e:
             raise RuntimeError(
                 "kagglehub is not installed. Install it with: pip install kagglehub"
