@@ -36,6 +36,7 @@ Rules:
     def __init__(self):
         self.provider = os.getenv("LLM_PROVIDER", "groq")
         self.api_key = os.getenv("GROQ_API_KEY")
+        self.model = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
         
         if not self.api_key:
             raise ValueError(
@@ -46,7 +47,7 @@ Rules:
         # Initialize Groq client
         from groq import Groq
         self.client = Groq(api_key=self.api_key)
-        print("✅ CrisisAgent initialized (Groq qwen/qwen3.8-27b)")
+        print(f"✅ CrisisAgent initialized (Groq {self.model})")
     
     def _parse_json_response(self, text: str) -> dict:
         """Extract JSON from LLM response, handling markdown wrappers"""
@@ -89,7 +90,7 @@ Generate an actionable response plan in JSON format."""
         for attempt in range(max_retries + 1):
             try:
                 response = self.client.chat.completions.create(
-                    model="qwen/qwen3.8-27b",
+                    model=self.model,
                     messages=[
                         {"role": "system", "content": self.SYSTEM_PROMPT},
                         {"role": "user", "content": user_prompt}
