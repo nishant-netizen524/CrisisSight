@@ -3,6 +3,7 @@
 > Upload a disaster image + a ground report → get a severity classification (Normal / Minor / Major / Critical) and an LLM-generated action plan with resources and response times.
 
 <!-- TODO: add 2–3 screenshots here (chat UI showing a Critical assessment + probability chart) and a demo GIF -->
+
 ![Demo](docs/demo.gif)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -21,6 +22,7 @@ CrisisSight is an end-to-end prototype that fuses **computer vision** and **NLP*
 ## Architecture
 
 ![Architecture diagram](docs/architecture_diagram.png)
+
 <!-- NOTE: rename the file docs/Architecture_diagram.png → docs/architecture_diagram.png (lowercase) so this renders on GitHub -->
 
 ```
@@ -43,12 +45,13 @@ User input (image + text report)
 
 ## Results (read honestly)
 
-| Component | Data | Metric |
-|---|---|---|
-| Vision encoder | AIDER disaster images (real, 4 classes: collapse / fire / flood / normal) | **78% val accuracy** |
-| Fusion model | 700 **synthetic** image–text pairs | 99.8% val accuracy — see caveat below |
+| Component      | Data                                                                      | Metric                                |
+| -------------- | ------------------------------------------------------------------------- | ------------------------------------- |
+| Vision encoder | AIDER disaster images (real, 4 classes: collapse / fire / flood / normal) | **78% val accuracy**                  |
+| Fusion model   | 700 **synthetic** image–text pairs                                        | 99.8% val accuracy — see caveat below |
 
 > ⚠️ **On the fusion number:** the synthetic text reports were generated from per-severity templates, so text content correlates almost perfectly with the label — the fusion model can score highly by relying on the text channel alone. This is a known limitation of the synthetic pair construction, not evidence of a strong multimodal model. The 78% vision accuracy on real images is the metric we trust; improving fusion training data (real image–report pairs) is the top item on the roadmap.
+
 <!-- TODO (strongly recommended): run a quick ablation — fusion accuracy with the text input zeroed/shuffled vs. normal — and add the two numbers to the table. Diagnosing leakage yourself is a strength signal in interviews. -->
 
 ## Tech stack
@@ -77,6 +80,7 @@ docs/                       # architecture diagram, demo assets
 ## Quickstart
 
 ### Prerequisites
+
 Python 3.10 (TensorFlow 2.15 constraint) · a free [Groq API key](https://console.groq.com)
 
 ### 1. Install
@@ -126,7 +130,7 @@ python api/main.py                 # http://localhost:8001  (Swagger docs at /do
 streamlit run frontend/app.py --server.port 8502
 ```
 
-Open http://localhost:8502, upload a disaster image, and type e.g. *"Massive flooding, people trapped on rooftops"*.
+Open http://localhost:8502, upload a disaster image, and type e.g. _"Massive flooding, people trapped on rooftops"_.
 
 ### 5. Test
 
@@ -145,8 +149,9 @@ python scripts/test_api.py
 
 <!-- TODO: replace with real names + who built what, or remove this section if solo.
      Keep it consistent with your resume — interviewers will ask "which part was yours?" -->
+
 - **Nishant Saini** — …
-- **Teammate name** — …
+- **Arun Kumar** — …
 
 ## License
 
